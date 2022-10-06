@@ -6,10 +6,12 @@ I decided to put wind meters on all my favorite spots. I started with one and at
 
 - The code doesn't have to work 100% 
 - It should take you ~2hours
+- Assume that everytime time you call the meters API, you will retrieve an array of 4 objects for past one hour (15 min per object). 
+- We will call the endpoint every, 15 min, so I am as up to date as possible 
 
 
 ### Task 1
-I want you to make a Laravel application where you get all this data from the windmeters API per hour and store it in a MySQL DB. We need to store the wind in knots in DB. Notice that I created a spots table where you find the meters by brand and their needed login credentials. Below you find the different JSON structures according to the brand.
+I want you to make a Laravel application where you get all this data from the windmeters API quater and store it in a MySQL DB. We need to store the wind in knots in DB. Notice that I created a spots table where you find the meters by brand and their needed login credentials. Below you find the different JSON structures according to the brand.
 
 ### Task 2
 I also want to retrieve the stored data through an API on your application for different users in our DB. So they can do something like kitesurfspot.nl/api/spot/lauwersoog, and then retrieve the stored data for the last 24 hours. Each user in the DB is paying to access one or multiple spots. So a user can only view spot location where he/she is paying for. You don't have to create a login, put assume that you have an auth user that will access the endpoint, so we should protect unwanted access.
