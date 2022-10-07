@@ -18,11 +18,13 @@ class WindmeterDataHandlerFactory
 
     public function build(Spot $spot): WindmeterDataHandlerInterface
     {
-        $handler = self::HANDLERS[$spot->brand] ?? null;
+        $handlerString = self::HANDLERS[$spot->brand] ?? null;
 
-        if (!$handler) {
+        if (!$handlerString) {
             throw new \Exception('Could not find a valid handler for brand: ' . $spot->brand);
         }
+
+        $handler = new $handlerString;
 
         if (!$handler instanceof WindmeterDataHandlerInterface) {
             throw new \Exception('The handler should implement the WindmeterDataHandlerInterface');
