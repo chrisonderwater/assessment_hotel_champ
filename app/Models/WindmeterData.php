@@ -22,4 +22,12 @@ class WindmeterData extends Model
         'direction',
         'knots',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function spot()
+    {
+        return $this->belongsTo(Spot::class);
+    }
 }
