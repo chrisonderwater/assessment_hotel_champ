@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
     {
         User::factory()->count(3)->create();
         Spot::factory()->count(30)->create();
+        $this->call([WindmeterDataSeeder::class]);
     }
 }
