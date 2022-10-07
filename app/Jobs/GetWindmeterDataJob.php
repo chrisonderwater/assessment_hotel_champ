@@ -54,7 +54,6 @@ class GetWindmeterDataJob implements ShouldQueue
 
             // Surrounded with try catch to keep functioning if one of the API's fail.
             try {
-                dump(get_class($handler));
                 $handler->handle($windmeterData);
             } catch (\Exception $e) {
                 logger()->error("Failed to handle data for WindmeterData: {$windmeterData->id}", [

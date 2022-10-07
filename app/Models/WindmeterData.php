@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class WindmeterData extends Model
 {
+    public $timestamps = false;
+
     protected $casts = [
-        'measured_at' => 'datetime'
+        'measured_at' => 'datetime',
+        'original_data' => 'array'
     ];
 
     /**

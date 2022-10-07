@@ -16,6 +16,10 @@ class Brand1Handler implements WindmeterDataHandlerInterface
 
     public function handle(WindmeterData $windmeterData): void
     {
-        // TODO: Implement handle() method.
+        $originalData = $windmeterData->original_data;
+        //$windmeterData->measured_at = new Carbon($originalData['date_time']);
+        $windmeterData->direction = $originalData['direction'];
+        $windmeterData->knots = WindmeterData::meterPerSecondToKnots($originalData['meter_per_second']);
+        $windmeterData->save();
     }
 }
