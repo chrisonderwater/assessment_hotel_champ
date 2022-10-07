@@ -30,4 +30,12 @@ class WindmeterData extends Model
     {
         return $this->belongsTo(Spot::class);
     }
+
+    public static function toProcess()
+    {
+        return self::query()
+            ->whereNotNull('original_data')
+            ->whereNull('measured_at')
+            ->get();
+    }
 }
