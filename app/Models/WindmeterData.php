@@ -38,4 +38,12 @@ class WindmeterData extends Model
             ->whereNull('measured_at')
             ->get();
     }
+
+    /*
+     * See: https://www.calculateme.com/speed/meters-per-second/to-knots/ for the used calculation.
+     */
+    public static function meterPerSecondToKnots(float $meterPerSecond): float
+    {
+        return $meterPerSecond * 1.9438445;
+    }
 }
