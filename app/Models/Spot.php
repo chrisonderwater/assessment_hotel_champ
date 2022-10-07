@@ -27,4 +27,12 @@ class Spot extends Model
     protected $casts = [
         'credentials' => 'array',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function windmeterData()
+    {
+        return $this->hasMany(WindmeterData::class);
+    }
 }

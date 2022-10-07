@@ -4,6 +4,7 @@ namespace App\Handlers;
 
 use App\Models\Spot;
 use App\Models\WindmeterData;
+use Illuminate\Support\Facades\Http;
 
 class Brand1Handler implements WindmeterDataHandlerInterface
 {
@@ -18,8 +19,10 @@ class Brand1Handler implements WindmeterDataHandlerInterface
     {
         $originalData = $windmeterData->original_data;
         //$windmeterData->measured_at = new Carbon($originalData['date_time']);
-        $windmeterData->direction = $originalData['direction'];
-        $windmeterData->knots = WindmeterData::meterPerSecondToKnots($originalData['meter_per_second']);
-        $windmeterData->save();
+
+        $windmeterData->updateQuietly([
+            'direction' => $originalData['direction'],
+            'knots' => WindmeterData::meterPerSecondToKnots($originalData['meter_per_second'])
+        ]);
     }
 }

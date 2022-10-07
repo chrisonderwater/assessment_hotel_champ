@@ -20,4 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // TODO: Add auth:sanctum middleware for authentication.
-Route::get('/data', [ApiController::class, 'data']);
+Route::apiResource('/spots/{spot}', SpotController::class)->only(['show']);
